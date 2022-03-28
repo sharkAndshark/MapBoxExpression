@@ -1,0 +1,404 @@
+{
+  "FeatureContext": {
+    "id": 5,
+    "zoom": 5,
+    "GeometryType": "LineString",
+    "attributes": {
+      "a": "a",
+      "b": "b",
+      "c": 1,
+      "d": 2
+    }
+  },
+  "cases": [
+    {
+      "expression": [
+        "+",
+        1.0,
+        1
+      ],
+      "result": 2
+    },
+    {
+      "expression": [
+        "-",
+        1,
+        1
+      ],
+      "result": 0
+    },
+    {
+      "expression": [
+        "*",
+        1,
+        1
+      ],
+      "result": 1
+    },
+    {
+      "expression": [
+        "min",
+        1,
+        1,
+        3.0,
+        6
+      ],
+      "result": 1
+    },
+    {
+      "expression": [
+        "zoom"
+      ],
+      "result": 5
+    },
+    {
+      "expression": [
+        "pi"
+      ],
+      "result": 3.1415926
+    },
+    {
+      "expression": [
+        "tan",
+        2
+      ],
+      "result": -2.1850398632
+    },
+    {
+      "expression": [
+        "sqrt",
+        2
+      ],
+      "result": 1.414213562373
+    },
+    {
+      "expression": [
+        "sin",
+        2
+      ],
+      "result": 0.909297426
+    },
+    {
+      "expression": [
+        "round",
+        2
+      ],
+      "result": 2.0
+    },
+    {
+      "expression": [
+        "log10",
+        22
+      ],
+      "result": 1.3424226808222062
+    },
+    {
+      "expression": [
+        "floor",
+        1.45
+      ],
+      "result": 1
+    },
+    {
+      "expression": [
+        "e"
+      ],
+      "result": 2.7182818284590451
+    },
+    {
+      "expression": [
+        "cos",
+        33.3
+      ],
+      "result": -0.3081779206211071
+    },
+    {
+      "expression": [
+        "ceil",
+        55.5
+      ],
+      "result": 56
+    },
+    {
+      "expression": [
+        "atan",
+        22.2
+      ],
+      "result": 1.5257817110203695
+    },
+    {
+      "expression": [
+        "asin",
+        0.4
+      ],
+      "result": 0.41151684606748806
+    },
+    {
+      "expression": [
+        "acos",
+        0.2
+      ],
+      "result": 1.3694384060045659
+    },
+    {
+      "expression": [
+        "abs",
+        -0.2
+      ],
+      "result": 0.2
+    },
+    {
+      "expression": [
+        "^",
+        1,
+        2
+      ],
+      "result": 1
+    },
+    {
+      "expression": [
+        "%",
+        5,
+        3
+      ],
+      "result": 2
+    },
+    {
+      "expression": [
+        "upcase",
+        "NiHao"
+      ],
+      "result": "NIHAO"
+    },
+    {
+      "expression": [
+        "downcase",
+        "NiHao"
+      ],
+      "result": "nihao"
+    },
+    {
+      "expression": [ "to-string", 5 ],
+      "result": "5"
+    },
+    {
+      "expression": [ "to-string", null ],
+      "result": ""
+    },
+    {
+      "expression": [ "to-string", true ],
+      "result": "true"
+    },
+    {
+      "expression": [ "to-string", "foo" ],
+      "result": "foo"
+    },
+    {
+      "expression": [
+        "to-string",
+        {
+          "a": "a",
+          "b": "b",
+          "c": 1
+        }
+      ],
+      "result": "{\"a\":\"a\",\"b\":\"b\",\"c\":1}"
+    },
+    {
+      "expression": [ "concat", "foo", "bar" ],
+      "result": "foobar"
+    },
+    {
+      "expression": [
+        "concat",
+        "foo",
+        "bar",
+        {
+          "a": "a",
+          "b": "b",
+          "c": 1
+        }
+      ],
+      "result": "foobar{\"a\":\"a\",\"b\":\"b\",\"c\":1}"
+    },
+    {
+      "expression": [
+        "interpolate",
+        [ "linear" ],
+        [ "zoom" ],
+        0,
+        10,
+        10,
+        0
+      ],
+      "result": 5
+    },
+    {
+      "expression": [
+        "at",
+        0,
+        [
+          "literal",
+          [ 1, 2, 3, 4, 5, 6 ]
+        ]
+      ],
+      "result": 1
+    },
+    {
+      "expression": [
+        "get",
+        "name",
+        { "name": "Jasmine" }
+      ],
+      "result": "Jasmine"
+    },
+    {
+      "expression": [
+        "get",
+        "a"
+      ],
+      "result": "a"
+    },
+    {
+      "expression": [
+        "get",
+        "notexistkey"
+      ],
+      "result": null
+    },
+    {
+      "expression": [
+        "has",
+        "name",
+        { "name": "Jasmine" }
+      ],
+      "result": true
+    },
+    {
+      "expression": [
+        "has",
+        "a"
+      ],
+      "result": true
+    },
+    {
+      "expression": [
+        "has",
+        "notexistkey"
+      ],
+      "result": false
+    },
+    {
+      "expression": [
+        "geometry-type"
+      ],
+      "result": "LineString"
+    },
+    {
+      "expression": [
+        "properties"
+      ],
+      "result": {
+        "a": "a",
+        "b": "b",
+        "c": 1,
+        "d": 2
+      }
+    },
+    {
+      "expression": [
+        ">",
+        5,
+        1
+      ],
+      "result": true
+    },
+    {
+      "expression": [
+        "<",
+        5,
+        1
+      ],
+      "result": false
+    },
+    {
+      "expression": [
+        ">=",
+        5,
+        5
+      ],
+      "result": true
+    },
+    {
+      "expression": [
+        "<=",
+        5,
+        5
+      ],
+      "result": true
+    },
+    {
+      "expression": [
+        "==",
+        5,
+        5
+      ],
+      "result": true
+    },
+    {
+      "expression": [
+        "!=",
+        5,
+        5
+      ],
+      "result": false
+    },
+    {
+      "expression": [
+        "!",
+        [ "==", 5, 5 ]
+      ],
+      "result": false
+    },
+    {
+      "expression": [
+        "case",
+        [ "==", 1, 2 ],
+        3,
+        [ "==", 4, 5 ],
+        6,
+        [ "==", 7, 8 ],
+        9,
+        10
+      ],
+      "result": 10
+    },
+    {
+      "expression": [
+        "case",
+        [ "==", 1, 1 ],
+        1,
+        [ "==", 4, 5 ],
+        6,
+        [ "==", 7, 8 ],
+        9,
+        10
+      ],
+      "result": 1
+    },
+    {
+      "expression": [
+        "match",
+        "Ferry Route",
+        "Route",
+        0,
+        [ "Major Highway", "Ferry Route" ],
+        1,
+        [ "Secondary Highway" ],
+        2,
+        3
+      ],
+      "result": 1
+    }
+  ]
+}
