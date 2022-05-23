@@ -89,6 +89,11 @@ namespace MapBoxExpression
             { "zoom", (OperatorType.ZoomOperator, Operator.Zoom) },
         };
 
+        public static dynamic Execute(string token, int zoom, string geometryType, object id = null, Dictionary<string, dynamic> attributes = null)
+        {
+            var jToken = JToken.Parse(token);
+            return Execute(jToken, zoom, geometryType, id, attributes);
+        }
         public static dynamic Execute(JToken jToken, int zoom, string geometryType, object id = null, Dictionary<string, dynamic> attributes = null)
         {
             var type = jToken.Type;
