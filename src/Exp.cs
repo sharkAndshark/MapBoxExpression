@@ -196,7 +196,29 @@ namespace MapBoxExpression
                             throw new NotSupportedException();
                     }
                 case Operator.In:
-                    break;
+                    var keyWord = Execute( tokens[1],zoom, geometryType, id, attributes);
+                    var input = Execute(tokens[2], zoom, geometryType,id, attributes);
+                    var inputType = input.GetType();
+                    if(inputType == typeof(string))
+                    {
+                        if (keyWord.GetType() != typeof(string)) throw new ArgumentException("");//todo get expection info detailed
+                        return (input as string).Contains(keyWord as string);
+                    }else if (inputType.IsArray)
+                    {
+                        var arr = input as dynamic[];
+                        foreach (var i in input)
+                        {
+                            if(i == keyWord)
+                            {
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("");//todo 
+                    }
                 case Operator.IndexOf:
                     break;
                 case Operator.Length:

@@ -399,6 +399,30 @@
         3
       ],
       "result": 1
+    },
+    {
+      "expression": [
+        "in",
+        "nihao",
+        "buhaonihaobuhoa"
+      ],
+      "result": true
+    },
+    {
+      "expression": [
+        "in",
+        "nihao",
+        [ "literal", "nihao", "buhaonihaobuhoa" ]
+      ],
+      "result": true
+    },
+    {
+      "expression": [
+        "in",
+        true,
+        [ "literal", true, false]
+      ],
+      "result": true
     }
   ]
 }
