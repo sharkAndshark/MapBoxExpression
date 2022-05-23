@@ -3,4 +3,9 @@
 Simple library can help you parse MapBox Expression to C# lambda.
 
 # Demos
-See test cases.
+```csharp
+var expJson = "[\"interpolate\",[ \"linear\" ],[ \"zoom\" ],0,10,10,0]";
+var result = Exp.Execute(expJson, zoom, geometryType, id, attributes);
+Assert.AreEqual(5,result);
+```
+
