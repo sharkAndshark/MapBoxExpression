@@ -2,13 +2,7 @@
   "FeatureContext": {
     "id": 5,
     "zoom": 5,
-    "GeometryType": "LineString",
-    "attributes": {
-      "a": "a",
-      "b": "b",
-      "c": 1,
-      "d": 2
-    }
+    "GeometryType": "LineString"
   },
   "cases": [
     {
@@ -420,9 +414,33 @@
       "expression": [
         "in",
         true,
-        [ "literal", true, false]
+        [ "literal", true, false ]
       ],
       "result": true
+    },
+    {
+      "expression": [
+        "array",
+        [ "get", "e" ]
+      ],
+      "result": [ 1, 2, 3 ]
+    },
+    {
+      "expression": [
+        "array",
+        "number",
+        [ "get", "e" ]
+      ],
+      "result": [ 1, 2, 3 ]
+    },
+    {
+      "expression": [
+        "array",
+        "number",
+        3,
+        [ "get", "e" ]
+      ],
+      "result": [ 1, 2, 3 ]
     }
   ]
 }

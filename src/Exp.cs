@@ -142,7 +142,23 @@ namespace MapBoxExpression
             switch (opt)
             {
                 case Operator.Array:
-                    break;
+                    var tokensCount = tokens.Length;
+                    if(tokensCount == 2)
+                    {
+                        return Array2(zoom, geometryType, id, attributes, tokens);
+                    }
+                    else if(tokensCount == 3)
+                    {
+                        return Array3(zoom, geometryType, id, attributes, tokens);
+                    }
+                    else if (tokensCount == 4)
+                    {
+                        return Array4(zoom, geometryType, id, attributes, tokens);
+                    }
+                    else
+                    {
+                        throw new Exception();//todo detail the exception
+                    }
                 case Operator.Boolean:
                     break;
                 case Operator.Literal:
@@ -185,7 +201,7 @@ namespace MapBoxExpression
                             if (!dic.ContainsKey(attributeName)) return null;
                             return dic[attributeName];
                         default:
-                            throw new NotSupportedException();
+                            throw new NotSupportedException();//todo 
                     }
                 case Operator.Has:
                     var keyName = Execute(tokens[1], zoom, geometryType, id, attributes);
@@ -387,6 +403,78 @@ namespace MapBoxExpression
             }
             throw new NotImplementedException();
         }
+
+        private static dynamic Array4(int zoom, string geometryType, object id, Dictionary<string, dynamic> attributes, JToken[] tokens)
+        {
+            var value = Execute(tokens[3], zoom, geometryType, id, attributes);
+            var type = value.GetType();
+            if (!type.IsArray)
+            {
+                throw new Exception();//todo detail the exception
+            }
+            var genericType = Execute(tokens[1], zoom, geometryType, id, attributes);
+            var count = Execute(tokens[2], zoom, geometryType, id, attributes);
+            if (genericType.GetType() != typeof(string))
+            {
+                throw new Exception();//todo 
+            }
+            var  arr = ToType(genericType,value);
+            if (arr.Length != count) throw new Exception();//todo
+            
+            return arr;
+        }
+
+        private static dynamic Array3(int zoom, string geometryType, object id, Dictionary<string, dynamic> attributes, JToken[] tokens)
+        {
+            var value = Execute(tokens[2], zoom, geometryType, id, attributes);
+            var type = value.GetType();
+            if (!type.IsArray)
+            {
+                throw new Exception();//todo detail the exception
+            }
+            var genericType = Execute(tokens[1], zoom, geometryType, id, attributes);
+            if (genericType.GetType() != typeof(string))
+            {
+                throw new Exception();//todo 
+            }
+            var arr = ToType(genericType, value);
+            if (arr == null)
+            {
+                throw new Exception();//todo
+            }
+
+            return arr;
+        }
+
+        private static dynamic ToType(string genericType,dynamic value)
+        {
+            switch (genericType)
+            {
+                case "string":
+                    return value as string[];
+                case "number":
+                    return value as double[];
+                case "boolean":
+                    return value as bool[];
+                default:
+                    throw new Exception();//todo
+            }
+        }
+
+        private static dynamic Array2(int zoom, string geometryType, object id, Dictionary<string, dynamic> attributes, JToken[] tokens)
+        {
+            var value = Execute(tokens[1], zoom, geometryType, id, attributes);
+            var type = value.GetType();
+            if (type.IsArray)
+            {
+                return value;
+            }
+            else
+            {
+                throw new Exception();//todo detail the exception
+            }
+        }
+
         internal enum InterpolationType
         {
             Linear,

@@ -23,7 +23,15 @@ namespace MapBoxExpression.Tests
                 var id = fcToken["id"].Value<int>();
                 var zoom = fcToken["zoom"].Value<int>();
                 var geometryType = fcToken["GeometryType"].Value<string>();
-                var attributes = fcToken["attributes"].ToObject<Dictionary<string, dynamic>>();
+
+                var attributes = new Dictionary<string, dynamic>()
+                {
+                    { "a", "a" },
+                    { "b", "b" },
+                    { "c", 1 },
+                    { "d", 2 },
+                    { "e", new []{1.0,2.0,3.0, } }
+                };
                 foreach (var item in arr)
                 {
                     var expToken = item["expression"];

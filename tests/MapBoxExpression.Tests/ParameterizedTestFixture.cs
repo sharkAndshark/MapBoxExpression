@@ -42,6 +42,9 @@ namespace MapBoxExpression.Tests
                 case JTokenType.Null:
                     Assert.IsNull(Exp.Execute(expToken, zoom, geometryType, id, attributes));
                     return;
+                case JTokenType.Array:
+                    result = Exp.Execute(expToken, zoom, geometryType, id, attributes);
+                    break;
                 default:
                     throw new NotImplementedException();
             }
